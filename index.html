@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Edwin - 专业学术服务</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --light-text: #fff;
+            --background-color: #f9f9f9;
+            --card-bg: #fff;
+            --card-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; color: var(--text-color); background-color: var(--background-color); font-size: 16px; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        header { background-color: var(--primary-color); color: var(--light-text); padding: 20px 0; text-align: center; position: relative; }
+        h1 { margin: 0; font-size: 2rem; }
+        .logo { font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; }
+        nav { background-color: var(--secondary-color); padding: 10px 0; position: sticky; top: 0; z-index: 100; }
+        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; padding: 0; margin: 0; }
+        nav ul li { margin: 5px 10px; }
+        nav ul li a { color: var(--light-text); text-decoration: none; font-weight: bold; padding: 5px 10px; border-radius: 3px; transition: background-color 0.3s; display: block; }
+        nav ul li a:hover { background-color: var(--primary-color); }
+        section { padding: 30px 0; border-bottom: 1px solid #eee; }
+        .service { background-color: var(--card-bg); padding: 20px; margin-bottom: 20px; border-radius: 5px; box-shadow: var(--card-shadow); }
+        .service h3 { color: var(--primary-color); margin-bottom: 10px; }
+        .service ul { padding-left: 20px; margin-top: 10px; }
+        .service li { margin-bottom: 5px; }
+        .home-intro { background-color: var(--card-bg); padding: 30px; border-radius: 5px; box-shadow: var(--card-shadow); margin-bottom: 30px; }
+        footer { background-color: var(--primary-color); color: var(--light-text); text-align: center; padding: 20px 0; margin-top: 30px; }
+        .contact-info { margin-top: 20px; }
+        .contact-info p { margin-bottom: 10px; }
+        .language-switcher { position: absolute; top: 15px; right: 15px; display: flex; }
+        .language-btn { background-color: var(--card-bg); border: 1px solid #ddd; color: var(--text-color); padding: 5px 10px; border-radius: 3px; cursor: pointer; transition: all 0.3s; font-size: 0.9rem; margin-left: 5px; }
+        .language-btn:hover { background-color: #e9ecef; }
+        .language-btn.active { background-color: var(--primary-color); color: var(--light-text); border-color: var(--primary-color); }
+        .credentials-card { margin-top: 20px; padding: 15px 20px; background-color: #f0f6ff; border-left: 4px solid #3498db; border-radius: 4px; }
+        .credentials-card ul { list-style: none; padding: 0; margin: 0; }
+        .credentials-card li { padding: 8px 0; border-bottom: 1px solid #dde8f5; }
+        .credentials-card li:last-child { border-bottom: none; }
+
+        .category-header { margin: 20px 0 15px 0; color: var(--secondary-color); border-left: 5px solid var(--accent-color); padding-left: 15px; font-size: 1.3rem; font-weight: bold; }
+
+        @media (max-width: 768px) {
+            body { font-size: 15px; } h1 { font-size: 1.8rem; } .logo { font-size: 1.3rem; }
+            nav ul { justify-content: space-around; } nav ul li { margin: 5px; }
+            .home-intro, .service { padding: 15px; } section { padding: 20px 0; }
+            .language-switcher { position: static; justify-content: center; margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="language-switcher">
+            <button class="language-btn active" id="zh-btn">中文</button>
+            <button class="language-btn" id="en-btn">English</button>
+        </div>
+        <div class="container">
+            <div class="logo">Dr. Edwin</div>
+            <h1 class="i18n" data-i18n="title">专业学术服务</h1>
+            <p class="i18n" data-i18n="subtitle">助力您的学术成功</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home" class="i18n" data-i18n="nav.home">首页</a></li>
+                <li><a href="#target-audience" class="i18n" data-i18n="nav.target">服务对象</a></li>
+                <li><a href="#sci" class="i18n" data-i18n="nav.sci">SCI发表</a></li>
+                <li><a href="#academic-training" class="i18n" data-i18n="nav.training">学术培训</a></li>
+                <li><a href="#math-tutoring" class="i18n" data-i18n="nav.math">数学辅导</a></li>
+                <li><a href="#contact" class="i18n" data-i18n="nav.contact">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="home">
+            <div class="home-intro">
+                <h2 class="i18n" data-i18n="home.title">欢迎来到 Dr. Edwin 学术服务</h2>
+                <p class="i18n" data-i18n="home.p1">Dr. Edwin 是一位专注于高端学术服务的专业学者，有多个知名大学的硕士和博士学位，专业涉及计算数学、统计、生物信息、人工智能和大数据，致力于为学生和研究人员提供最专业的学术支持。</p>
+                <p class="i18n" data-i18n="home.p2">无论您是需要SCI论文发表指导，还是寻求学术培训或数学辅导，Dr. Edwin 都能为您提供个性化的解决方案。</p>
+
+                <div class="credentials-card">
+                    <ul>
+                        <li>📄 <strong class="i18n" data-i18n="cred.item1.title">发表SCI论文 60+ 篇</strong>——<span class="i18n" data-i18n="cred.item1.desc">深耕学术科研多年，在多个高影响力国际期刊上发表论文逾60篇，具备丰富的一线科研与写作经验。</span></li>
+                        <li>🔍 <strong class="i18n" data-i18n="cred.item2.title">多个SCI期刊审稿人</strong>——<span class="i18n" data-i18n="cred.item2.desc">受邀担任多本SCI收录期刊的同行评审专家，深度了解期刊审稿标准与编辑偏好，能为投稿提供针对性指导。</span></li>
+                        <li>📊 <strong class="i18n" data-i18n="cred.item3.title">Google Scholar 引用 6600+</strong>——<span class="i18n" data-i18n="cred.item3.desc">研究成果获得学界广泛认可，引用量超过6700次且持续增加，学术影响力有目共睹。</span></li>
+                        <li>🎓 <strong class="i18n" data-i18n="cred.item4.title">辅导高中生发表综述SCI，助力本科生斩获北美名校录取</strong>——<span class="i18n" data-i18n="cred.item4.desc">成功辅导多位高中生在SCI期刊发表综述论文，并帮助众多高中和本科生凭借突出的科研背景获得北美顶尖大学的录取通知。</span></li>
+                        <li>✅ <strong class="i18n" data-i18n="cred.item5.title">辅导硕博生顺利毕业，成功拿到海外offer</strong>——<span class="i18n" data-i18n="cred.item5.desc">全程陪伴硕士及博士研究生完成毕业论文写作与答辩，并协助多位学员成功申请到海外高校及科研机构的职位。</span></li>
+                        <li>🏥 <strong class="i18n" data-i18n="cred.item6.title">辅导医院 30+ 项目成功发表SCI高分论文</strong>——<span class="i18n" data-i18n="cred.item6.desc">与国内多家三甲医院及科研团队深度合作，累计辅导30余个临床与基础医学项目在高分SCI期刊成功发表。</span></li>
+                        <li>🌏 <strong class="i18n" data-i18n="cred.item7.title">学生遍布全球</strong>——<span class="i18n" data-i18n="cred.item7.desc">服务对象涵盖欧美澳、新加坡、港澳、俄罗斯、马来西亚、日本等国家和地区的学生与研究人员，具备丰富的跨文化学术辅导经验。</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="target-audience">
+            <h2 class="i18n" data-i18n="target.title" style="text-align: center;">服务对象与学术规划</h2>
+            
+            <div class="category-header i18n" data-i18n="target.group1">学术规划与背景提升</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div class="service">
+                    <h3 class="i18n" data-i18n="target.s1.title">初高升藤 · 背景提升</h3>
+                    <p class="i18n" data-i18n="target.s1.desc">助力志在顶尖名校的学子，通过高水平学术成果打造无可替代的申请优势。</p>
+                </div>
+                <div class="service">
+                    <h3 class="i18n" data-i18n="target.s2.title">硕博申请 · 顺利毕业</h3>
+                    <p class="i18n" data-i18n="target.s2.desc">从开题到答辩，从拒稿到发表，为您的学术学位获取保驾护航。</p>
+                </div>
+                <div class="service">
+                    <h3 class="i18n" data-i18n="target.s3.title">职称晋升 · 医学科研</h3>
+                    <p class="i18n" data-i18n="target.s3.desc">深耕三甲医院与高校需求，协助临床及教学工作者突破科研瓶颈。</p>
+                </div>
+                <div class="service">
+                    <h3 class="i18n" data-i18n="target.s4.title">北美 NIW / EB-1A</h3>
+                    <p class="i18n" data-i18n="target.s4.desc">精准对标移民局评审标准，短时间内快速提升论文引用及学术影响力。</p>
+                </div>
+            </div>
+
+            <div class="category-header i18n" data-i18n="target.group2">数学竞赛与专业课辅导</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div class="service">
+                    <h3 class="i18n" data-i18n="target.s5.title">AMC / SAT 数学竞赛</h3>
+                    <p class="i18n" data-i18n="target.s5.desc">针对 AMC 8/10/12 及 SAT 数学专项提分。系统化逻辑训练，助力冲击高分荣誉与国际认可。</p>
+                </div>
+                <div class="service">
+                    <h3 class="i18n" data-i18n="target.s6.title">高等数学 · 统计 · 线代</h3>
+                    <p class="i18n" data-i18n="target.s6.desc">微积分、线性代数及概率统计深度辅导。深谙国际高校大纲，解决学术痛点，稳步提升 GPA。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sci">
+            <h2 class="i18n" data-i18n="sci.title">SCI发表服务</h2>
+            <div class="service">
+                <h3 class="i18n" data-i18n="sci.service1.title">SCI论文全程辅导</h3>
+                <p class="i18n" data-i18n="sci.service1.desc">Dr. Edwin 的SCI论文辅导服务由其本人亲自提供，涵盖从选题、实验设计到论文撰写、修改和投稿的全过程。专注于帮助研究人员在高影响力期刊上发表论文。</p>
+                <ul>
+                    <li class="i18n" data-i18n="sci.service1.item1">研究课题设计与优化</li>
+                    <li class="i18n" data-i18n="sci.service1.item2">论文结构与写作指导</li>
+                    <li class="i18n" data-i18n="sci.service1.item3">数据分析和结果呈现</li>
+                    <li class="i18n" data-i18n="sci.service1.item4">期刊选择与投稿策略</li>
+                    <li class="i18n" data-i18n="sci.service1.item5">审稿意见回复指导</li>
+                </ul>
+            </div>
+            <div class="service">
+                <h3 class="i18n" data-i18n="sci.service2.title">硕博毕业论文辅导</h3>
+                <p class="i18n" data-i18n="sci.service2.desc">为硕士和博士研究生提供全方位的毕业论文指导服务，从开题报告到最终答辩准备，Dr. Edwin 将全程陪伴您的学术旅程。</p>
+                <ul>
+                    <li class="i18n" data-i18n="sci.service2.item1">研究方案设计与优化</li>
+                    <li class="i18n" data-i18n="sci.service2.item2">文献综述指导</li>
+                    <li class="i18n" data-i18n="sci.service2.item3">研究方法咨询</li>
+                    <li class="i18n" data-i18n="sci.service2.item4">论文结构与写作指导</li>
+                    <li class="i18n" data-i18n="sci.service2.item5">答辩准备与模拟</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="academic-training">
+            <h2 class="i18n" data-i18n="training.title">学术培训服务</h2>
+            <div class="service">
+                <h3 class="i18n" data-i18n="training.service1.title">学术写作培训</h3>
+                <p class="i18n" data-i18n="training.service1.desc">针对学术论文写作的系统培训课程，帮助研究人员掌握国际学术写作规范。</p>
+                <ul>
+                    <li class="i18n" data-i18n="training.service1.item1">学术英语写作技巧</li>
+                    <li class="i18n" data-i18n="training.service1.item2">文献综述写作方法</li>
+                    <li class="i18n" data-i18n="training.service1.item3">研究论文各部分写作规范</li>
+                    <li class="i18n" data-i18n="training.service1.item4">学术表达与论证技巧</li>
+                </ul>
+            </div>
+            <div class="service">
+                <h3 class="i18n" data-i18n="training.service2.title">研究方法培训</h3>
+                <p class="i18n" data-i18n="training.service2.desc">系统讲解各类研究方法，提升研究设计能力。</p>
+                <ul>
+                    <li class="i18n" data-i18n="training.service2.item1">定量研究方法</li>
+                    <li class="i18n" data-i18n="training.service2.item2">定性研究方法</li>
+                    <li class="i18n" data-i18n="training.service2.item3">混合研究方法</li>
+                    <li class="i18n" data-i18n="training.service2.item4">数据分析方法</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="math-tutoring">
+            <h2 class="i18n" data-i18n="math.title">数学辅导服务</h2>
+            <div class="service">
+                <h3 class="i18n" data-i18n="math.service1.title">SAT数学培训</h3>
+                <p class="i18n" data-i18n="math.service1.desc">Dr. Edwin 的SAT数学培训课程针对中国学生特点设计，帮助学生快速掌握考试技巧，提高数学成绩。课程内容包括所有SAT数学考点和解题策略。</p>
+                <ul>
+                    <li class="i18n" data-i18n="math.service1.item1">全面覆盖SAT数学考试内容</li>
+                    <li class="i18n" data-i18n="math.service1.item2">个性化学习计划</li>
+                    <li class="i18n" data-i18n="math.service1.item3">真题模拟与解析</li>
+                    <li class="i18n" data-i18n="math.service1.item4">考试技巧与时间管理</li>
+                    <li class="i18n" data-i18n="math.service1.item5">定期进度评估</li>
+                </ul>
+            </div>
+            <div class="service">
+                <h3 class="i18n" data-i18n="math.service2.title">北美本科数学培训</h3>
+                <p class="i18n" data-i18n="math.service2.desc">为在北美就读本科的学生提供专业数学课程辅导，包括微积分、线性代数、概率统计等核心课程。</p>
+                <ul>
+                    <li class="i18n" data-i18n="math.service2.item1">一对一课程辅导</li>
+                    <li class="i18n" data-i18n="math.service2.item2">作业与考试准备</li>
+                    <li class="i18n" data-i18n="math.service2.item3">概念理解与问题解决能力培养</li>
+                    <li class="i18n" data-i18n="math.service2.item4">与教授沟通技巧指导</li>
+                    <li class="i18n" data-i18n="math.service2.item5">学术写作辅导</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="i18n" data-i18n="contact.title">联系我们</h2>
+            <div class="contact-info">
+                <p><strong class="i18n" data-i18n="contact.email">邮箱：</strong> dredwin666@gmail.com</p>
+                <div class="wechat-qr">
+                    <p><strong class="i18n" data-i18n="contact.wechat">微信：</strong></p>
+                   <img src="wx.png" alt="QR Code" width="200">
+       
+    <p style="font-size:0.85rem; color:#888; margin-top:5px;" class="i18n" data-i18n="contact.wechat.hint">扫码添加微信</p>
+</div>
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="i18n" data-i18n="footer">&copy; 2026 Dr. Edwin Academic Services. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            zh: {
+                "title": "专业学术服务",
+                "subtitle": "助力您的学术成功",
+                "nav.home": "首页", "nav.target": "服务对象", "nav.sci": "SCI发表", "nav.training": "学术培训", "nav.math": "数学辅导", "nav.contact": "联系我们",
+                "home.title": "欢迎来到 Dr. Edwin 学术服务",
+                "home.p1": "Dr. Edwin 是一位专注于高端学术服务的专业学者，有多个知名大学的硕士和博士学位，专业涉及计算数学、统计、生物信息、人工智能和大数据，致力于为学生和研究人员提供最专业的学术支持。",
+                "home.p2": "无论您是需要SCI论文发表指导，还是寻求学术培训或数学辅导，Dr. Edwin 都能为您提供个性化的解决方案。",
+                "cred.item1.title": "发表SCI论文 60+ 篇", "cred.item1.desc": "深耕学术科研多年，在多个高影响力国际期刊上发表论文逾60篇，具备丰富的一线科研与写作经验。",
+                "cred.item2.title": "多个SCI期刊审稿人", "cred.item2.desc": "受邀担任多本SCI收录期刊的同行评审专家，深度了解期刊审稿标准与编辑偏好，能为投稿提供针对性指导。",
+                "cred.item3.title": "Google Scholar 引用 6700+", "cred.item3.desc": "研究成果获得学界广泛认可，引用量超过6700次且持续增加，学术影响力有目共睹。",
+                "cred.item4.title": "辅导高中生发表综述SCI，助力本科生斩获北美名校录取", "cred.item4.desc": "成功辅导多位高中生在SCI期刊发表综述论文，并帮助众多高中和本科生凭借突出的科研背景获得北美顶尖大学的录取通知。",
+                "cred.item5.title": "辅导硕博生顺利毕业，成功拿到海外offer", "cred.item5.desc": "全程陪伴硕士及博士研究生完成毕业论文写作与答辩，并协助学员成功申请到海外高校的PhD、Master项目的offer及科研机构科研职位。",
+                "cred.item6.title": "辅导医院 30+ 项目成功发表SCI高分论文", "cred.item6.desc": "与国内多家三甲医院及科研团队深度合作，累计辅导30余个临床与基础医学项目在高分SCI期刊成功发表。",
+                "cred.item7.title": "学生遍布全球", "cred.item7.desc": "服务对象涵盖欧美澳、新加坡、港澳、俄罗斯、马来西亚、日本等国家和地区的学生与研究人员，具备丰富的跨文化学术辅导经验。",
+                "target.title": "服务对象与学术规划",
+                "target.group1": "学术规划与背景提升",
+                "target.group2": "数学竞赛与专业课辅导",
+                "target.s1.title": "初高升藤 · 背景提升", "target.s1.desc": "助力志在顶尖名校的学子，通过高水平学术成果打造无可替代的申请优势。",
+                "target.s2.title": "硕博申请 · 顺利毕业", "target.s2.desc": "从开题到答辩，从拒稿到发表，为您的学术学位获取保驾护航。",
+                "target.s3.title": "职称晋升 · 医学科研", "target.s3.desc": "深耕三甲医院与高校需求，协助临床及教学工作者突破科研瓶颈。",
+                "target.s4.title": "北美 NIW / EB-1A", "target.s4.desc": "精准对标移民局评审标准，短时间内快速提升论文引用及学术影响力。",
+                "target.s5.title": "AMC / SAT 数学竞赛", "target.s5.desc": "针对 AMC 8/10/12 及 SAT 数学专项提分。系统化逻辑训练，助力冲击高分荣誉与国际认可。",
+                "target.s6.title": "高等数学 · 统计 · 线代", "target.s6.desc": "微积分、线性代数及概率统计深度辅导。深谙国际高校大纲，解决学术痛点，稳步提升 GPA。",
+                "sci.title": "SCI发表服务", "sci.service1.title": "SCI论文全程辅导", "sci.service1.desc": "Dr. Edwin 的SCI论文辅导服务由其本人亲自提供，涵盖从选题、实验设计到论文撰写、修改和投稿的全过程。专注于帮助研究人员在高影响力期刊上发表论文。",
+                "sci.service1.item1": "研究课题设计与优化", "sci.service1.item2": "论文结构与写作指导", "sci.service1.item3": "数据分析和结果呈现", "sci.service1.item4": "期刊选择与投稿策略", "sci.service1.item5": "审稿意见回复指导",
+                "sci.service2.title": "硕博毕业论文辅导", "sci.service2.desc": "为硕士和博士研究生提供全方位的毕业论文指导服务，从开题报告到最终答辩准备，Dr. Edwin 将全程陪伴您的学术旅程。",
+                "sci.service2.item1": "研究方案设计与优化", "sci.service2.item2": "文献综述指导", "sci.service2.item3": "研究方法咨询", "sci.service2.item4": "论文结构与写作指导", "sci.service2.item5": "答辩准备与模拟",
+                "training.title": "学术培训服务", "training.service1.title": "学术写作培训", "training.service1.desc": "针对学术论文写作的系统培训课程，帮助研究人员掌握国际学术写作规范。",
+                "training.service1.item1": "学术英语写作技巧", "training.service1.item2": "文献综述写作方法", "training.service1.item3": "研究论文各部分写作规范", "training.service1.item4": "学术表达与论证技巧",
+                "training.service2.title": "研究方法培训", "training.service2.desc": "系统讲解各类研究方法，提升研究设计能力。",
+                "training.service2.item1": "定量研究方法", "training.service2.item2": "定性研究方法", "training.service2.item3": "混合研究方法", "training.service2.item4": "数据分析方法",
+                "math.title": "数学辅导服务", "math.service1.title": "SAT数学培训", "math.service1.desc": "Dr. Edwin 的SAT数学培训课程针对中国学生特点设计，帮助学生快速掌握考试技巧，提高数学成绩。课程内容包括所有SAT数学考点和解题策略。",
+                "math.service1.item1": "全面覆盖SAT数学考试内容", "math.service1.item2": "个性化学习计划", "math.service1.item3": "真题模拟与解析", "math.service1.item4": "考试技巧与时间管理", "math.service1.item5": "定期进度评估",
+                "math.service2.title": "北美本科数学培训", "math.service2.desc": "为在北美就读本科的学生提供专业数学课程辅导，包括微积分、线性代数、概率统计等核心课程。",
+                "math.service2.item1": "一对一课程辅导", "math.service2.item2": "作业与考试准备", "math.service2.item3": "概念理解与问题解决能力培养", "math.service2.item4": "与教授沟通技巧指导", "math.service2.item5": "学术写作辅导",
+                "contact.title": "联系我们", "contact.email": "邮箱：", "contact.wechat": "微信：", "contact.wechat.hint": "扫码添加微信",
+                "footer": "&copy; 2026 Dr. Edwin Academic Services. All rights reserved."
+            },
+            en: {
+                "title": "Academic Services",
+                "subtitle": "Empowering Your Success",
+                "nav.home": "Home", "nav.target": "Audience", "nav.sci": "SCI Service", "nav.training": "Training", "nav.math": "Math Tutoring", "nav.contact": "Contact",
+                "home.title": "Welcome to Dr. Edwin's Academic Services",
+                "home.p1": "Dr. Edwin is a scholar specializing in high-end academic services with Master's and PhD degrees from renowned universities.",
+                "home.p2": "Whether you need SCI publication guidance, academic training, or math tutoring, Dr. Edwin provides personalized solutions.",
+                "cred.item1.title": "60+ SCI Publications", "cred.item1.desc": "Extensive research experience with 60+ papers in high-impact international journals and first-line writing expertise.",
+                "cred.item2.title": "SCI Journal Reviewer", "cred.item2.desc": "Invited peer reviewer for multiple SCI journals with deep insights into editorial standards and strategies.",
+                "cred.item3.title": "6700+ Citations", "cred.item3.desc": "Research results recognized globally with over 6700 Google Scholar citations and consistent influence.",
+                "cred.item4.title": "Elite College Admissions", "cred.item4.desc": "Helping students publish SCI reviews and gain admission to top-tier North American universities.",
+                "cred.item5.title": "Graduation & Careers", "cred.item5.desc": "Guiding Master's and PhD students through their thesis to secure prestigious global positions.",
+                "cred.item6.title": "30+ Clinical Projects", "cred.item6.desc": "Partnering with top-tier hospitals to successfully publish high-impact medical research.",
+                "cred.item7.title": "Global Student Base", "cred.item7.desc": "Extensive coaching experience with students from North America, Europe, Australia, and Asia.",
+                "target.title": "Target Audience & Planning",
+                "target.group1": "Academic Planning & Profile",
+                "target.group2": "Math Competition & Coursework",
+                "target.s1.title": "Ivy League Prep", "target.s1.desc": "Building unique application advantages through high-level research achievements.",
+                "target.s2.title": "Graduation & Degree", "target.s2.desc": "Securing your degree through comprehensive guidance from proposal to publication.",
+                "target.s3.title": "Career Promotion", "target.s3.desc": "Overcoming research bottlenecks for medical professionals and academic faculty.",
+                "target.s4.title": "US Talent Visa (NIW)", "target.s4.desc": "Boosting academic impact and citations strategically for immigration standards.",
+                "target.s5.title": "AMC / SAT Math", "target.s5.desc": "Logic-based training for AMC 8/10/12 and SAT Math to achieve international honors.",
+                "target.s6.title": "Advanced Math & Stats", "target.s6.desc": "Tutoring for Calculus, Linear Algebra, and Statistics to solve academic pain points.",
+                "sci.title": "SCI Publication", "sci.service1.title": "Full SCI Coaching", "sci.service1.desc": "End-to-end support covering topic selection, experimental design, writing, and peer review responses.",
+                "sci.service1.item1": "Topic Selection & Optimization", "sci.service1.item2": "Structure & Writing Guidance", "sci.service1.item3": "Data Analysis & Presentation", "sci.service1.item4": "Journal Selection & Strategy", "sci.service1.item5": "Peer Review Response Support",
+                "sci.service2.title": "Graduate Thesis Coaching", "sci.service2.desc": "Comprehensive thesis guidance from proposal to defense for Master's and PhD candidates.",
+                "sci.service2.item1": "Research Design & Optimization", "sci.service2.item2": "Literature Review Guidance", "sci.service2.item3": "Methodology Consulting", "sci.service2.item4": "Writing & Formatting Support", "sci.service2.item5": "Defense Prep & Simulation",
+                "training.title": "Academic Training", "training.service1.title": "Writing Training", "training.service1.desc": "Systematic training for mastering international academic writing standards.",
+                "training.service1.item1": "Academic English Writing", "training.service1.item2": "Literature Review Methods", "training.service1.item3": "Writing Standard for Sections", "training.service1.item4": "Academic Expression & Logic",
+                "training.service2.title": "Research Methodology", "training.service2.desc": "Systematic teaching of research methods to enhance design capabilities.",
+                "training.service2.item1": "Quantitative Methods", "training.service2.item2": "Qualitative Methods", "training.service2.item3": "Mixed Methods", "training.service2.item4": "Data Analysis Techniques",
+                "math.title": "Math Tutoring", "math.service1.title": "SAT Math Prep", "math.service1.desc": "Designed for rapid score improvement by mastering exam techniques and strategies.",
+                "math.service1.item1": "Full Coverage of SAT Content", "math.service1.item2": "Personalized Learning Plans", "math.service1.item3": "Real Exam Simulation", "math.service1.item4": "Time Management Skills", "math.service1.item5": "Periodic Progress Assessment",
+                "math.service2.title": "University Math Prep", "math.service2.desc": "Expert tutoring for core math courses in North American undergraduate programs.",
+                "math.service2.item1": "One-on-one Tutoring", "math.service2.item2": "Homework & Exam Prep", "math.service2.item3": "Problem-Solving Capabilities", "math.service2.item4": "Communication with Professors", "math.service2.item5": "Academic Writing Support",
+                "contact.title": "Contact Us", "contact.email": "Email: ", "contact.wechat": "WeChat: ", "contact.wechat.hint": "Scan to add WeChat",
+                "footer": "&copy; 2026 Dr. Edwin Academic Services. All rights reserved."
+            }
+        };
+
+        let currentLang = 'zh';
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('zh-btn').classList.toggle('active', lang === 'zh');
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            document.querySelectorAll('.i18n').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+        }
+        document.getElementById('zh-btn').addEventListener('click', () => switchLanguage('zh'));
+        document.getElementById('en-btn').addEventListener('click', () => switchLanguage('en'));
+        switchLanguage('zh');
+    </script>
+</body>
+</html>
